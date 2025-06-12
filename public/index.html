@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cineverso</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link href="assets/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="navbar navbar-expand-lg navbar-dark bg-black fixed-top py-3">
+        <div class="container-fluid px-3">
+            <a href="index.html" class="navbar-brand text-decoration-none">
+                <h1 class="text-white fw-bold mb-0 titulo-cineverso">
+                    Cine<span class="text-warning">Verso</span>
+                </h1>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a href="categorias.html"
+                            class="nav-link text-white text-uppercase fw-bold">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="favoritos.html" id="link-favoritos"
+                            class="nav-link text-white text-uppercase fw-bold d-none">Meus Favoritos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="app_login/login.html" id="link-auth"
+                            class="nav-link text-white text-uppercase fw-bold">Login/Registrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="cadastro-itens.html" id="link-cadastro-itens"
+                            class="nav-link text-white text-uppercase fw-bold d-none">Cadastrar Filmes</a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="d-flex mt-2 mt-lg-0" role="search" id="search-form">
+                            <input class="form-control me-2" type="search" placeholder="Buscar filmes..."
+                                aria-label="Search" id="search-input">
+                            <button class="btn btn-outline-warning" type="submit">Buscar</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-fluid p-0">
+        <div class="d-flex justify-content-center align-items-center mt-5 py-5" id="destaques-titulo-container">
+            <h2 class="text-white fw-bold display-4">Destaques</h2>
+        </div>
+
+        <div id="carouselDestaques" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators" id="carousel-indicators-container">
+                </div>
+            <div class="carousel-inner" id="carousel-inner-container">
+                </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestaques"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselDestaques"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
+        </div>
+
+        <div class="container my-5">
+            <h2 class="text-center text-uppercase pt pb-4" id="titulo-lancamentos">Lançamentos</h2>
+            <div class="row mt-4 mb-4 py-4" id="filmes-container-1"></div>
+
+            <h2 class="text-center text-uppercase pt-4 pb-4" id="titulo-recomendados">Recomendados pra você</h2>
+            <div class="row mt-4 mb-4 py-4" id="filmes-container-2"></div>
+
+            <h2 class="text-center text-uppercase pt pb-4" id="titulo-vale-a-pena">Vale a pena assistir</h2>
+            <div class="row mt-4 mb-5 py-5" id="filmes-container-3"></div>
+        </div>
+
+        <div class="container my-5 py-5">
+            <h2 class="text-center text-uppercase pt pb-4 text-warning">Estatísticas de Filmes por Categoria</h2>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8"> 
+                    <canvas id="graficoCategorias"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-black text-white pt-5 pb-3 mt-5 px-3">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-8 col-lg-7 mb-4 order-2 order-md-1">
+                    <p class="mb-1 text-center text-md-start">
+                        Meu nome é Matheus Gouvêa Ramalho, tenho 19 anos e sou estudante de Ciência da Computação na PUC Minas – unidade Coração Eucarístico. Sempre tive grande interesse por matemática e programação, o que me motivou a escolher essa área. Sou ex-aluno do Colégio Espanhol Santa Maria Minas e possuo certificação B2 em Espanhol pelo Instituto Cervantes. Atualmente, estou aprimorando meu inglês e me dedicando aos estudos na área de tecnologia. Apesar de estar no primeiro período, já possuo noções básicas de HTML, CSS (incluindo Bootstrap) e JavaScript, além de programar em C. Me considero uma pessoa proativa, comunicativa, adaptável e com facilidade para trabalhar em equipe. Gosto de aprender coisas novas e sempre estou disposto a ajudar no que for preciso
+                    </p>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 mb-4 order-1 order-md-2 d-flex justify-content-center justify-content-md-end">
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <img src="img/Screenshot 2025-04-22 174047.png" alt="Avatar" width="100" height="100"
+                            class="me-0 me-sm-3 mb-3 mb-sm-0 rounded-circle">
+                        <div>
+                            <p class="mb-1 text-center text-sm-start"><strong>Aluno:</strong> Matheus Ramalho</p>
+                            <p class="mb-1 text-center text-sm-start"><strong>Curso:</strong> Ciência da Computação</p>
+                            <p class="mb-1 text-center text-sm-start"><strong>Turma:</strong> Manhã</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 CineVerso. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

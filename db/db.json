@@ -1,0 +1,160 @@
+{
+  "filmes": [
+    {
+      "id": "1",
+      "titulo": "Anora",
+      "imagem": "img/vibezz_152955225.jpg",
+      "categoria": "Romance",
+      "descricao": "Em Anora, longa dirigido e escrito por Sean Baker, acompanhamos a jovem Anora (Mikey Madison), uma trabalhadora do sexo da região do Brooklyn, nos Estados Unidos. Em uma noite aparentemente normal de mais um dia de trabalho, a garota descobre que pode ter tirado a sorte grande, uma oportunidade de mudar seu destino: ela acredita ter encontrado o seu verdadeiro amor após se casar impulsivamente com o filho de um oligarca, o herdeiro russo Ivan (Mark Eidelshtein). Não demora muito para que a notícia se espalhe pela Rússia e logo o seu conto de fadas é ameaçado quando os pais de Ivan entram em cena, desaprovando totalmente o casamento. A história que ambos construíram é ameaçada e os dois decidem em comum acordo por findar o casamento. Mas será que para sempre?",
+      "fundo": "img/4jreuepp.png",
+      "tempo": "2h 19m",
+      "ano": "2024",
+      "secao": "Lançamentos"
+    },
+    {
+      "id": "2",
+      "titulo": "Capitão América",
+      "imagem": "img/vibezz_373532021.jpeg",
+      "categoria": "Ação",
+      "descricao": "Capitão América: Admirável Mundo Novo é o próximo filme do famoso herói da Marvel. Desta vez, o filme dá continuidade à minissérie de televisão Falcão e o Soldado Invernal, onde o escudo está nas mãos de Sam Wilson (Anthony Mackie), após Steve Rogers (Chris Evans) o entregar em Vingadores: Ultimato. Durante a série, Sam aceita seu dever como o novo Capitão América ao lado de Bucky Barnes (Sebastian Stan). Admirável Mundo Novo compõe a Fase Cinco do Universo Cinematográfico Marvel (UCM). O enredo promete explorar os desafios e responsabilidades de Wilson em seu novo papel, enquanto enfrenta novas ameaças e aliados inesperados. A direção está a cargo de Julius Onah, conhecido por seu trabalho em The Cloverfield Paradox, e o roteiro foi escrito por Malcolm Spellman, que também foi o showrunner de Falcão e o Soldado Invernal.",
+      "fundo": "img/ca-times.brightspotcdn.jpg",
+      "tempo": "2 hrs",
+      "ano": "2025",
+      "secao": "Lançamentos"
+    },
+    {
+      "id": "3",
+      "titulo": "Ainda Estou Aqui",
+      "imagem": "img/aindaestouaqui.jpg",
+      "categoria": "Drama",
+      "descricao": "Ainda Estou Aqui é uma adaptação cinematográfica do livro autobiográfico de Marcelo Rubens Paiva, que narra a emocionante trajetória de sua mãe, Eunice Paiva, durante a ditadura militar no Brasil. Ambientada em 1970, a história retrata como a vida de uma mulher casada com um importante político muda drasticamente após o desaparecimento dele, capturado pelo regime militar. Forçada a abandonar a rotina de dona de casa, Eunice (Fernanda Torres/Fernanda Montenegro) se transforma em uma ativista dos direitos humanos, lutando pela verdade sobre o paradeiro do marido e enfrentando as consequências brutais da repressão. O filme explora não apenas o drama pessoal de Eunice, mas também o impacto do regime militar na vida de milhares de famílias brasileiras, destacando o papel das mulheres na resistência. Com uma narrativa profunda e sensível, Ainda Estou Aqui traz à tona questões de perda, coragem e resiliência, enquanto revisita um dos períodos mais sombrios da história do Brasil. A obra é um tributo à força de Eunice Paiva, que, contra todas as adversidades, se torna uma figura central na luta pelos direitos humanos no país.",
+      "fundo": "img/12132029048158.jpg",
+      "tempo": "2h 15m",
+      "ano": "2024",
+      "secao": "Lançamentos"
+    },
+    {
+      "id": "4",
+      "titulo": "Wicked",
+      "imagem": "img/e92bba484442009644de7d4742b2bad0.webp",
+      "categoria": "Musical",
+      "descricao": "Baseado no musical homônimo da Broadway, Wicked é o prelúdio da famosa história de Dorothy e do Mágico de Oz, onde conhecemos a história não contada da Bruxa Boa e da Bruxa Má do Oeste. Na trama, Elphaba (Cynthia Erivo) é uma jovem do Reino de Oz, mas incompreendida por causa de sua pele verde incomum e por ainda não ter descoberto seu verdadeiro poder. Sua rotina é tranquila e pouco interessante, mas ao iniciar seus estudos na Universidade de Shiz, seu destino encontra Glinda (Ariana Grande), uma jovem popular e ambiciosa, nascida em berço de ouro, que só quer garantir seus privilégios e ainda não conhece sua verdadeira alma. As duas iniciam uma inesperada amizade; no entanto, suas diferenças, como o desejo de Glinda pela popularidade e poder, e a determinação de Elphaba em permanecer fiel a si mesma, entram no caminho, o que pode perpetuar no futuro de cada uma e em como as pessoas de Oz as enxergam.",
+      "fundo": "img/Wicked Movie Review Ariana Grande Cynthia Erivo.jpg",
+      "tempo": "2h 40m",
+      "ano": "2024",
+      "secao": "Lançamentos"
+    },
+    {
+      "id": "5",
+      "titulo": "Avatar",
+      "imagem": "img/big-poster-filme-avatar-o-caminho-da-agua-90x60-cm-lo002-presente-geek.jpg",
+      "categoria": "Ação",
+      "descricao": "Em Avatar: O Caminho da Água, sequência de Avatar (2009), após dez anos da primeira batalha de Pandora entre os Na'vi e os humanos, Jake Sully (Sam Worthington) vive pacificamente com sua família e sua tribo. Ele e Ney'tiri formaram uma família e estão fazendo de tudo para ficarem juntos, devido a problemas conjugais e papéis que cada um tem que exercer dentro da tribo. No entanto, eles devem sair de casa e explorar as regiões de Pandora, indo para o mar e fazendo pactos com outros Na'vi da região. Quando uma antiga ameaça ressurge, Jake deve travar uma guerra difícil contra os humanos novamente. Mesmo com dificuldade, Jake acaba fazendo novos aliados - alguns dos quais já vivem entre os Na'vi e outros com novos avatares. Mesmo com uma guerra em curso, Jake e Ney'tiri terão que fazer de tudo para ficarem juntos e cuidar da família e de sua tribo.",
+      "fundo": "img/a_avatarpandorapedia_omatikaya_16x9_1098_13_f0fe224a.jpeg",
+      "tempo": "3h 12m",
+      "ano": "2022",
+      "secao": "Recomendados pra você"
+    },
+    {
+      "id": "6",
+      "titulo": "Blade Runner 2049",
+      "imagem": "img/big-poster-filme-blade-runner-2049-lo001-tamanho-90x60-cm-poster-de-filme.jpg",
+      "categoria": "Ficção científica",
+      "descricao": "Em Blade Runner 2049, após os problemas enfrentados com os Nexus 8, uma nova espécie de replicantes é desenvolvida, de forma que seja mais obediente aos humanos. Um deles é K (Ryan Gosling), um blade runner que caça replicantes foragidos para a polícia de Los Angeles. Após encontrar Sapper Morton (Dave Bautista), K descobre um fascinante segredo: a replicante Rachel (Sean Young) teve um filho, mantido em sigilo até então. A possibilidade de que replicantes se reproduzam pode desencadear uma guerra deles com os humanos, o que faz com que a tenente Joshi (Robin Wright), chefe de K, o envie para encontrar e eliminar a criança.",
+      "fundo": "img/l-intro-1641821633.jpg",
+      "tempo": "2h 43m",
+      "ano": "2017",
+      "secao": "Recomendados pra você"
+    },
+    {
+      "id": "7",
+      "titulo": "Nós",
+      "imagem": "img/big-poster-nos-filme-lo01-tamanho-90x60-cm-presente-geek.jpg",
+      "categoria": "Terror",
+      "descricao": "Adelaide (Lupita Nyong'o) e Gabe (Winston Duke) decidem levar a família para passar um fim de semana na praia e descansar em uma casa de veraneio. Eles viajam com os filhos e começam a aproveitar o ensolarado local, mas a chegada de um grupo misterioso muda tudo e a família se torna refém de seus próprios duplos.",
+      "fundo": "img/unnamed.jpg",
+      "tempo": "2h 1m",
+      "ano": "2019",
+      "secao": "Recomendados pra você"
+    },
+    {
+      "id": "8",
+      "titulo": "Não Olhe Para Cima",
+      "imagem": "img/dont-look-up-1-540x800.jpg",
+      "categoria": "Ficção científica",
+      "descricao": "Não Olhe Para Cima conta a história de Randall Mindy (Leonardo DiCaprio) e Kate Dibiasky (Jennifer Lawrence), dois astrônomos que fazem uma descoberta surpreendente de um cometa orbitando dentro do sistema solar que está em rota de colisão direta com a Terra. Com a ajuda do doutor Oglethorpe (Rob Morgan), Kate e Randall embarcam em um tour pela mídia que os leva ao escritório da Presidente Orlean (Meryl Streep) e de seu filho, Jason (Jonah Hill). Com apenas seis meses até o cometa fazer o impacto, gerenciar o ciclo de notícias de 24 horas e ganhar a atenção do público obcecado pelas mídias sociais antes que seja tarde demais se mostra chocantemente cômico. Porém a dupla terá que fazer mais do que falar a chocante notícia para o público, já que ninguém quer acreditar neles ou muito menos dar notícias tristes para o mundo. Um retrato de uma realidade e de um futuro extremamente próximo",
+      "fundo": "img/AAAABet8VgE9BdArZBS-Nzcd7cIF1Z6SybKqJLS9rF3JxczXpSc3wFGwrDR5MvWNySzqCA7JHeHZsyBbAZxaBCNOe6YV9BmI4j4oaK9a.jpg",
+      "tempo": "2h 15m",
+      "ano": "2021",
+      "secao": "Recomendados pra você"
+    },
+    {
+      "id": "9",
+      "titulo": "Clube da Luta",
+      "imagem": "img/dwq4pa5f767b1.jpg",
+      "categoria": "Drama",
+      "descricao": "Jack (Edward Norton) é um executivo jovem, trabalha como investigador de seguros, mora confortavelmente, mas ele está ficando cada vez mais insatisfeito com sua vida medíocre. Para piorar ele está enfrentando uma terrível crise de insônia, até que encontra uma cura inusitada para o sua falta de sono ao frequentar grupos de auto-ajuda. Nesses encontros ele passa a conviver com pessoas problemáticas como a viciada Marla Singer (Helena Bonham Carter) e a conhecer estranhos como Tyler Durden (Brad Pitt). Misterioso e cheio de ideias, Tyler apresenta para Jack um grupo secreto que se encontra para extravasar suas angústias e tensões através de violentos combates corporais.",
+      "fundo": "img/why-is-fight-club-one-of-the-greatest-movie-ever-made.jpg",
+      "tempo": "2h 19m",
+      "ano": "1999",
+      "secao": "Vale a pena assistir"
+    },
+    {
+      "id": "10",
+      "titulo": "Batman",
+      "imagem": "img/poster-adesivo-batman-o-cavaleiro-das-trevas-ressurge-a3-lo1-batman.jpg",
+      "categoria": "Ação",
+      "descricao": "Oito anos após a morte de Harvey Dent, a cidade de Gotham City está pacificada e não precisa mais do Batman. A situação faz com que Bruce Wayne (Christian Bale) se torne um homem recluso em sua mansão, convivendo apenas com o mordomo Alfred (Michael Caine). Um dia, em meio a uma festa realizada na Mansão Wayne, uma das garçonetes contratadas rouba um colar de grande valor sentimental. Trata-se de Selina Kyle (Anne Hathaway), uma esperta e habilidosa ladra que, apesar de flagrada por Bruce, consegue fugir. Curioso em descobrir quem é ela, Bruce retorna à caverna para usar os computadores que tanto lhe serviram quando vestia o manto do Homem-Morcego. Aos poucos começa a perceber indícios do surgimento de uma nova ameaça a Gotham City, personificada no brutamontes Bane (Tom Hardy). É o suficiente para que volte a ser o Batman, apesar dos problemas físicos decorrentes de suas atividades como super-herói ao longo dos anos.",
+      "fundo": "img/unnasmed.jpg",
+      "tempo": " 2h 45m",
+      "ano": "2012",
+      "secao": "Vale a pena assistir"
+    },
+    {
+      "id": "11",
+      "titulo": "Alien",
+      "imagem": "img/pos-03736-0c9fa69c6909c1026017211500446414-480-0.jpg",
+      "categoria": "Terror ",
+      "descricao": "Romulus é um thriller de ficção científica que retorna às raízes da franquia de sucesso Alien, o 8º Passageiro (1979). Ambientado entre os eventos do filme de 1979 e Aliens, O Resgate (1986), a trama acompanha um grupo de jovens colonizadores espaciais que se aventuram nas profundezas de uma estação espacial abandonada. Lá, eles descobrem uma forma de vida aterrorizante, forçando-os a lutar desesperadamente por sua sobrevivência. O elenco inclui Cailee Spaeny, David Jonsson, Archie Renaux e Isabela Merced. A produção é assinada por Ridley Scott, enquanto o roteiro é de autoria do próprio Álvarez, baseado nos personagens criados por Dan O'Bannon e Ronald Shusett. Com essa nova abordagem, o filme busca resgatar a atmosfera claustrofóbica e o terror psicológico que consagraram a franquia, prometendo agradar tanto aos fãs antigos quanto aos novos espectadores.",
+      "fundo": "img/Mn2SouLnxu8ZZPBhZ9A9oF.jpg",
+      "tempo": "1h 59m",
+      "ano": "2024",
+      "secao": "Vale a pena assistir"
+    },
+    {
+      "id": "12",
+      "titulo": "Pearl",
+      "imagem": "img/1ed22a3b4b17fda6d5d67ffada6e0c2e.jpg",
+      "categoria": "Terror",
+      "descricao": "Pearl é mais um capítulo do mundo distorcido de X do cineasta Ti West. O ano é 1918, e a jovem Pearl (Mia Goth) está obcecada em se tornar famosa. Presa na fazenda isolada de sua família, Pearl se vê obrigada a cuidar de seu pai doente, e viver sob a vigilância constante de sua amarga e autoritária mãe devota. Desejando uma vida glamourosa como ela viu nos filmes, Pearl encontra suas ambições, tentações e repressões entrando em conflito. Nesta história da origem da icônica vilã de X, quando o sonho de ser finalmente uma estrela é negado a ela, ela começa a assassinar, até alcançar o que deseja. Filmado secretamente e simultaneamente com X: A Marca da Morte (2022). Pearl serve como prequela do filme, mostrando o início da vida da personagem-título décadas antes dos eventos de X.",
+      "fundo": "img/MV5BZjI4M2Y5NDItMzNjNC00Zjk0LTkyMzMtMTkzYmI5NGNkN2FiXkEyXkFqcGc@._V1_.jpg",
+      "tempo": "1h 43min",
+      "ano": "2023",
+      "secao": "Vale a pena assistir"
+    }
+  ],
+  "usuarios": [
+    {
+      "nome": "Administrador do Sistema",
+      "login": "admin",
+      "email": "admin@abc.com",
+      "senha": "123",
+      "id": 1,
+      "isAdmin": true,
+      "favoritos": [
+        "2",
+        "1",
+        "4",
+        "3"
+      ]
+    },
+    {
+      "id": 2,
+      "login": "user",
+      "senha": "123",
+      "nome": "Usuario Comum",
+      "email": "user@abc.com",
+      "isAdmin": false
+    }
+  ]
+}

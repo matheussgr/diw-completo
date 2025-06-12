@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVerso | Login e Cadastro</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        body {
+            background-color: #1a1a1a; /* Fundo bem escuro, quase preto, do CineVerso */
+            color: #f8f9fa; /* Texto padrão claro */
+            /* font-family: 'Poppins', sans-serif; */ /* Se você usar a fonte Poppins */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ocupa a altura total da viewport */
+        }
+
+        .navbar-brand .titulo-cineverso {
+            font-size: 2.5rem; /* Ajuste o tamanho da fonte do logo se precisar */
+        }
+
+        /* Ajuste para o cabeçalho fixo no topo da página */
+        header {
+            width: 100%;
+            z-index: 1030; /* Z-index alto para ficar acima de outros elementos */
+        }
+
+        /* Estilo da caixa de login/cadastro */
+        #login-section {
+            flex-grow: 1; /* Permite que a seção de login ocupe o espaço restante */
+            display: flex;
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            padding-top: 80px; /* Espaço para o cabeçalho fixo */
+            padding-bottom: 30px;
+        }
+
+        #login-box-container {
+            background-color: #2c2c2c; /* Fundo mais escuro para a caixa, para contraste */
+            border: 1px solid #ffc107; /* Borda amarela, cor de destaque do CineVerso */
+            /* ALTERAÇÃO AQUI: Sombra mais suave */
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.3); /* Sombra mais discreta */
+            padding: 40px; /* Aumenta o padding interno */
+            border-radius: 12px; /* Borda mais arredondada */
+            width: 100%;
+            max-width: 500px; /* Largura máxima da caixa de login */
+        }
+
+        #login-box-container h3 {
+            color: #ffc107; /* Títulos em amarelo CineVerso */
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            color: #f8f9fa; /* Labels em branco para melhor legibilidade */
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            background-color: #495057; /* Fundo escuro para os inputs */
+            border: 1px solid #6c757d; /* Borda sutil nos inputs */
+            color: #f8f9fa; /* Texto digitado nos inputs */
+            padding: 10px 15px; /* Aumenta o padding interno dos inputs */
+            border-radius: 6px;
+        }
+
+        .form-control:focus {
+            background-color: #495057; /* Mantém o fundo escuro no focus */
+            border-color: #ffc107; /* Borda amarela no focus */
+            box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.4); /* Sombra amarela no focus */
+            color: #f8f9fa;
+        }
+
+        .btn-cineverso {
+            background-color: #ffc107 !important; /* Botões em amarelo CineVerso */
+            border-color: #ffc107 !important;
+            color: #212529 !important; /* Texto escuro para o botão */
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-cineverso:hover {
+            background-color: #e0a800 !important; /* Tom mais escuro de amarelo no hover */
+            border-color: #e0a800 !important;
+        }
+
+        .modal-content {
+            background-color: #2c2c2c; /* Fundo do modal igual à caixa de login */
+            color: #f8f9fa; /* Texto do modal */
+            border: 1px solid #ffc107; /* Borda do modal */
+            border-radius: 12px;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #495057; /* Linha divisória no cabeçalho do modal */
+        }
+
+        .modal-title {
+            color: #ffc107; /* Título do modal em amarelo */
+            font-weight: bold;
+        }
+
+        .btn-close {
+            filter: invert(1); /* Inverte a cor do 'x' para branco */
+        }
+
+        .btn-secondary {
+            background-color: #6c757d !important; /* Botão cancelar em cinza */
+            border-color: #6c757d !important;
+            color: #f8f9fa !important;
+        }
+
+        /* Novo estilo para o link de cadastro abaixo do formulário */
+        .register-text {
+            margin-top: 20px;
+            text-align: center;
+            color: #f8f9fa; /* Cor do texto padrão */
+        }
+
+        .register-text a {
+            color: #ffc107; /* Cor do link em amarelo CineVerso */
+            font-weight: bold;
+            text-decoration: none; /* Remove sublinhado padrão */
+        }
+
+        .register-text a:hover {
+            text-decoration: underline; /* Adiciona sublinhado no hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar navbar-expand-lg navbar-dark bg-black fixed-top py-3">
+        <div class="container-fluid px-3">
+            <a href="../index.html" class="navbar-brand text-decoration-none">
+                <h1 class="text-white fw-bold mb-0 titulo-cineverso">
+                    Cine<span class="text-warning">Verso</span>
+                </h1>
+            </a>
+            </div>
+    </header>
+
+    <main id="login-section" class="container-fluid">
+        <div id="login-box-container">
+            <h3 class="text-center">Acesse sua conta</h3>
+            <form id="login-form" class="form" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuário</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+                <div class="d-flex justify-content-end align-items-center pt-2">
+                    <input type="submit" name="submit" class="btn btn-cineverso" value="Login">
+                </div>
+            </form>
+
+            <div class="register-text">
+                Não tem uma conta? 
+                <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Cadastre-se</a>
+            </div>
+            
+        </div>
+    </main>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Cadastre-se no CineVerso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form" class="form" method="post">
+                        <div class="mb-3">
+                            <label for="txt_login" class="form-label">Usuário (login)</label>
+                            <input type="text" name="txt_login" id="txt_login" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_nome" class="form-label">Nome completo</label>
+                            <input type="text" name="txt_nome" id="txt_nome" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_email" class="form-label">Email</label>
+                            <input type="email" name="txt_email" id="txt_email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_senha" class="form-label">Senha</label>
+                            <input type="password" name="txt_senha" id="txt_senha" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_senha2" class="form-label">Confirme a Senha</label>
+                            <input type="password" name="txt_senha2" id="txt_senha2" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btn_salvar" class="btn btn-cineverso">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="login-page.js"></script>
+</body>
+</html>
