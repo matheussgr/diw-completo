@@ -1,103 +1,101 @@
-/* Estilos para o Carrossel */
 #carouselDestaques {
-    width: 100vw; /* Ocupa 100% da largura da viewport */
-    margin-left: calc(50% - 50vw); /* Centraliza o carrossel na tela, eliminando margens laterais */
-    position: relative; /* Garante que o carrossel não afete o fluxo normal dos elementos */
-    overflow: hidden; /* Garante que nada transborde */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    position: relative;
+    overflow: hidden;
 }
 
 .carousel-item img.carousel-image {
     width: 100%;
-    height: 70vh; /* Define uma altura fixa para os banners do carrossel */
-    object-fit: cover; /* Faz a imagem cobrir todo o espaço, cortando as bordas se necessário */
-    object-position: center; /* Centraliza a imagem no espaço */
-    /* background-color: black; */ /* Opcional: para preencher espaço caso a imagem não cubra totalmente (com 'contain') */
+    height: 70vh;
+    object-fit: cover;
+    object-position: center;
 }
 
-/* Ajuste para o conteúdo principal para não ser coberto pelo cabeçalho fixo */
+
 main {
-    padding-top: 80px; /* Ajuste este valor se o seu cabeçalho tiver altura diferente */
+    padding-top: 80px;
 }
 
-/* Se precisar de mais ajustes no cabeçalho */
+
 header {
-    z-index: 1050; /* Garante que o cabeçalho esteja acima de outros elementos, como o carrossel */
+    z-index: 1050;
 }
 
-/* Opcional: estilize as imagens de ícone do menu */
+
 .icons {
-    width: 24px; /* Ou outro tamanho desejado para os ícones */
+    width: 24px;
     height: 24px;
     object-fit: contain;
 }
 
-/* Ajuste para o texto do rodapé ficar justificado */
+
 footer .text-justify {
     text-align: justify;
 }
 
-/* Remover a margem do container principal se o carrossel já ocupa 100vw */
-/* Se a classe .container-fluid do main já remove as margens, isso pode não ser necessário */
+
+
 .container-fluid.p-0 {
-    padding: 0 !important; /* Garante que não haja padding lateral no main que impeça o 100vw */
+    padding: 0 !important;
 }
 
-/* Ajuste para os card-body para que o conteúdo seja centralizado verticalmente */
+
 .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Espaçamento entre o título e os botões */
-    align-items: center; /* Centraliza o texto e botões horizontalmente */
+    justify-content: space-between;
+    align-items: center;
 }
-/* Estilo geral do corpo da página */
+
 body {
     background-color: hsl(218, 31%, 5%);
     color: white;
 }
 
-/* Ícones no mobile*/
+
 .icons {
     height: 1.25rem;
     width: 1.25rem;
     margin-top: 0.063rem;
 }
 
-/* Imagens principais dos banners */
+
 .banner-image {
     max-height: 100vh;
     min-height: 400px;
     object-fit: cover;
 }
 
-/* Espaçamento do conteúdo do banner */
+
 .banner-content {
     padding-top: 70px;
     padding-bottom: 50px;
 }
 
 
-/* Imagens nos cards de filmes */
+
 .movie-card-img {
     height: 450px;
     object-fit: cover;
 }
 
-/* Input da caixa de busca */
+
 input.form-control {
     border-radius: 25px;
-    border: 2px solid hsl(49, 100%, 50%); /* amarelo */
+    border: 2px solid hsl(49, 100%, 50%);
     padding: 10px 15px;
     font-size: 16px;
     transition: all 0.3s ease-in-out;
 }
 
-/* Quando o input está em foco */
+
 input.form-control:focus {
     border-color: hsl(49, 100%, 50%);
     box-shadow: 0 0 8px hsl(49, 100%, 37%);
 }
 
-/* Botão de busca */
+
 button.btn-outline-success {
     border-radius: 25px;
     border-width: 2px;
@@ -108,46 +106,45 @@ button.btn-outline-success {
     color: hsl(49, 100%, 50%);
 }
 
-/* Botão de busca ao passar o mouse */
+
 button.btn-outline-success:hover {
     background-color: hsl(49, 100%, 50%);
     color: white;
     border-color: hsl(49, 100%, 50%);
 }
 
-/* Estilo dos links do menu */
+
 .menu-link {
     color: white;
     transition: color 0.3s ease-in-out;
 }
 
-/* Cor ao passar o mouse nos links do menu */
+
 .menu-link:hover {
-    color: hwb(37 23% 0%) !important; /* tom amarelado */
+    color: hwb(37 23% 0%) !important;
 }
 
-/* Geral para links */
+
 a {
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
 
-/* Links visitados*/
+
 a:visited,
 a:link {
     color: whitesmoke;
 }
 
-/* Cor ao passar o mouse nos links */
+
 a:hover {
     color: rgb(0, 0, 0);
 }
 
-/* Efeito hover nos cards de filmes */
+
 .lista-filmes-item:hover .lista-filmes-item-imagem {
-    transform: scale(1.05); 
+    transform: scale(1.05);
     opacity: 0.8;
     border: 0.125rem solid rgba(255, 255, 255, 0.685);
     transition: all 0.3s ease;
 }
-

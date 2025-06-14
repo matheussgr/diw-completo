@@ -13,7 +13,7 @@ fetch('http://localhost:3000/filmes')
 
     const ctx = document.getElementById('graficoCategorias').getContext('2d');
 
-    // Criar gradiente (se quiser um degradê bonito)
+
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, 'rgba(0, 123, 255, 0.9)');
     gradient.addColorStop(1, 'rgba(0, 123, 255, 0.4)');

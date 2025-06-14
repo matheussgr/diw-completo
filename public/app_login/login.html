@@ -11,76 +11,74 @@
     
     <style>
         body {
-            background-color: #1a1a1a; /* Fundo bem escuro, quase preto, do CineVerso */
-            color: #f8f9fa; /* Texto padrão claro */
-            /* font-family: 'Poppins', sans-serif; */ /* Se você usar a fonte Poppins */
+            background-color: #1a1a1a; 
+            color: #f8f9fa; 
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Ocupa a altura total da viewport */
+            min-height: 100vh; 
         }
 
         .navbar-brand .titulo-cineverso {
-            font-size: 2.5rem; /* Ajuste o tamanho da fonte do logo se precisar */
+            font-size: 2.5rem; 
         }
 
-        /* Ajuste para o cabeçalho fixo no topo da página */
+ 
         header {
             width: 100%;
-            z-index: 1030; /* Z-index alto para ficar acima de outros elementos */
+            z-index: 1030;
         }
 
-        /* Estilo da caixa de login/cadastro */
+        
         #login-section {
-            flex-grow: 1; /* Permite que a seção de login ocupe o espaço restante */
+            flex-grow: 1; 
             display: flex;
-            align-items: center; /* Centraliza verticalmente */
-            justify-content: center; /* Centraliza horizontalmente */
-            padding-top: 80px; /* Espaço para o cabeçalho fixo */
+            align-items: center; 
+            justify-content: center; 
+            padding-top: 80px; 
             padding-bottom: 30px;
         }
 
         #login-box-container {
-            background-color: #2c2c2c; /* Fundo mais escuro para a caixa, para contraste */
-            border: 1px solid #ffc107; /* Borda amarela, cor de destaque do CineVerso */
-            /* ALTERAÇÃO AQUI: Sombra mais suave */
-            box-shadow: 0 0 15px rgba(255, 193, 7, 0.3); /* Sombra mais discreta */
-            padding: 40px; /* Aumenta o padding interno */
-            border-radius: 12px; /* Borda mais arredondada */
+            background-color: #2c2c2c; 
+            border: 1px solid #ffc107; 
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.3); 
+            padding: 40px; 
+            border-radius: 12px; 
             width: 100%;
-            max-width: 500px; /* Largura máxima da caixa de login */
+            max-width: 500px; 
         }
 
         #login-box-container h3 {
-            color: #ffc107; /* Títulos em amarelo CineVerso */
+            color: #ffc107; 
             font-weight: bold;
             margin-bottom: 25px;
         }
 
         .form-group label {
-            color: #f8f9fa; /* Labels em branco para melhor legibilidade */
+            color: #f8f9fa; 
             font-weight: bold;
             margin-bottom: 5px;
         }
 
         .form-control {
-            background-color: #495057; /* Fundo escuro para os inputs */
-            border: 1px solid #6c757d; /* Borda sutil nos inputs */
-            color: #f8f9fa; /* Texto digitado nos inputs */
-            padding: 10px 15px; /* Aumenta o padding interno dos inputs */
+            background-color: #495057; 
+            border: 1px solid #6c757d; 
+            color: #f8f9fa; 
+            padding: 10px 15px; 
             border-radius: 6px;
         }
 
         .form-control:focus {
-            background-color: #495057; /* Mantém o fundo escuro no focus */
-            border-color: #ffc107; /* Borda amarela no focus */
-            box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.4); /* Sombra amarela no focus */
+            background-color: #495057; 
+            border-color: #ffc107;
+            box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.4); 
             color: #f8f9fa;
         }
 
         .btn-cineverso {
-            background-color: #ffc107 !important; /* Botões em amarelo CineVerso */
+            background-color: #ffc107 !important; 
             border-color: #ffc107 !important;
-            color: #212529 !important; /* Texto escuro para o botão */
+            color: #212529 !important; 
             font-weight: bold;
             padding: 10px 20px;
             border-radius: 6px;
@@ -88,51 +86,51 @@
         }
 
         .btn-cineverso:hover {
-            background-color: #e0a800 !important; /* Tom mais escuro de amarelo no hover */
+            background-color: #e0a800 !important; 
             border-color: #e0a800 !important;
         }
 
         .modal-content {
-            background-color: #2c2c2c; /* Fundo do modal igual à caixa de login */
-            color: #f8f9fa; /* Texto do modal */
-            border: 1px solid #ffc107; /* Borda do modal */
+            background-color: #2c2c2c; 
+            color: #f8f9fa; 
+            border: 1px solid #ffc107; 
             border-radius: 12px;
         }
 
         .modal-header {
-            border-bottom: 1px solid #495057; /* Linha divisória no cabeçalho do modal */
+            border-bottom: 1px solid #495057; 
         }
 
         .modal-title {
-            color: #ffc107; /* Título do modal em amarelo */
+            color: #ffc107; 
             font-weight: bold;
         }
 
         .btn-close {
-            filter: invert(1); /* Inverte a cor do 'x' para branco */
+            filter: invert(1); 
         }
 
         .btn-secondary {
-            background-color: #6c757d !important; /* Botão cancelar em cinza */
+            background-color: #6c757d !important; 
             border-color: #6c757d !important;
             color: #f8f9fa !important;
         }
 
-        /* Novo estilo para o link de cadastro abaixo do formulário */
+       
         .register-text {
             margin-top: 20px;
             text-align: center;
-            color: #f8f9fa; /* Cor do texto padrão */
+            color: #f8f9fa; 
         }
 
         .register-text a {
-            color: #ffc107; /* Cor do link em amarelo CineVerso */
+            color: #ffc107; 
             font-weight: bold;
-            text-decoration: none; /* Remove sublinhado padrão */
+            text-decoration: none; 
         }
 
         .register-text a:hover {
-            text-decoration: underline; /* Adiciona sublinhado no hover */
+            text-decoration: underline; 
         }
     </style>
 </head>

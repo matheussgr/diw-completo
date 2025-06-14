@@ -1,9 +1,9 @@
-// cadastro-itens.js
+
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const BASE_URL = 'http://localhost:3000'; // URL base do seu JSON Server
+    const BASE_URL = 'http://localhost:3000';
 
-    // Elementos do DOM
+
     const adminContent = document.getElementById('admin-content');
     const noAdminAccessMessage = document.getElementById('no-admin-access');
     const filmeForm = document.getElementById('filme-form');
@@ -20,12 +20,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const filmesTableBody = document.getElementById('filmes-table-body');
     const btnCancelarEdicao = document.getElementById('btn-cancelar-edicao');
 
-    // Elementos do cabeçalho (para updateHeader)
+
     const linkFavoritos = document.getElementById("link-favoritos");
     const linkAuth = document.getElementById("link-auth");
     const linkCadastroItens = document.getElementById("link-cadastro-itens");
 
-    // --- Funções de Autenticação (Copias EXATAS do app.js para consistência) ---
+
     function getCurrentUser() {
         try {
             const user = sessionStorage.getItem('currentUser');
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    function saveCurrentUser(user) { /* Não usado diretamente aqui, mas manter por consistência */
+    function saveCurrentUser(user) {
         try {
             sessionStorage.setItem('currentUser', JSON.stringify(user));
         } catch (e) {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         sessionStorage.removeItem('currentUser');
     }
 
-    // --- Gerenciamento do Cabeçalho e Login/Logout (Copias EXATAS do app.js para consistência) ---
+
     function updateHeader() {
         const currentUser = getCurrentUser();
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (currentUser) {
             if (linkFavoritos) linkFavoritos.classList.remove('d-none');
-            
+
             if (linkAuth) {
                 linkAuth.textContent = 'Logout';
                 linkAuth.href = '#';
@@ -85,14 +85,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // --- Lógica CRUD de Filmes ---
 
-    // Gera um ID único para novos filmes (se JSON Server não gerar automaticamente)
+
+
     function generateUniqueId() {
-        return Date.now().toString(); // Simplesmente um timestamp, para IDs como string
+        return Date.now().toString();
     }
 
-    // Carrega e exibe os filmes na tabela
+
     async function loadFilmes() {
         try {
             const response = await fetch(`${BASE_URL}/filmes`);
@@ -100,8 +100,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 throw new Error(`Erro ao buscar filmes: ${response.status}`);
             }
             const filmes = await response.json();
-            
-            filmesTableBody.innerHTML = ''; // Limpa a tabela antes de preencher
+
+            filmesTableBody.innerHTML = '';
 
             if (filmes.length === 0) {
                 filmesTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">Nenhum filme cadastrado.</td></tr>';
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 filmesTableBody.appendChild(row);
             });
 
-            // Adiciona event listeners aos botões de editar e excluir
+
             document.querySelectorAll('.btn-edit').forEach(button => {
                 button.addEventListener('click', (e) => editFilme(e.target.dataset.id));
             });
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // Salvar ou Atualizar filme
+
     filmeForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             imagem: imagemInput.value,
             fundo: fundoInput.value,
             tempo: tempoInput.value,
-            ano: anoInput.value ? parseInt(anoInput.value) : null, // Converte para número
+            ano: anoInput.value ? parseInt(anoInput.value) : null,
             secao: secaoSelect.value,
             destaque: destaqueCheckbox.checked
         };
@@ -158,15 +158,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             let response;
             if (filmeId) {
-                // Atualizar filme existente
+
                 response = await fetch(`${BASE_URL}/filmes/${filmeId}`, {
-                    method: 'PUT', // PUT para substituir o recurso inteiro
+                    method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newFilme)
                 });
             } else {
-                // Adicionar novo filme
-                newFilme.id = generateUniqueId(); // Gera um ID para o novo filme
+
+                newFilme.id = generateUniqueId();
                 response = await fetch(`${BASE_URL}/filmes`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -179,17 +179,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             alert('Filme salvo com sucesso!');
-            filmeForm.reset(); // Limpa o formulário
-            filmeIdInput.value = ''; // Limpa o ID oculto
-            btnCancelarEdicao.style.display = 'none'; // Oculta o botão de cancelar
-            loadFilmes(); // Recarrega a tabela
+            filmeForm.reset();
+            filmeIdInput.value = '';
+            btnCancelarEdicao.style.display = 'none';
+            loadFilmes();
         } catch (error) {
             console.error('Erro ao salvar filme:', error);
             alert('Não foi possível salvar o filme. Tente novamente.');
         }
     });
 
-    // Preenche o formulário para edição
+
     async function editFilme(id) {
         try {
             const response = await fetch(`${BASE_URL}/filmes/${id}`);
@@ -209,22 +209,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             secaoSelect.value = filme.secao || '';
             destaqueCheckbox.checked = filme.destaque || false;
 
-            btnCancelarEdicao.style.display = 'inline-block'; // Mostra o botão de cancelar
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Rola para o topo do formulário
+            btnCancelarEdicao.style.display = 'inline-block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         } catch (error) {
             console.error('Erro ao buscar filme para edição:', error);
             alert('Não foi possível carregar o filme para edição.');
         }
     }
 
-    // Cancelar edição
+
     btnCancelarEdicao.addEventListener('click', () => {
         filmeForm.reset();
         filmeIdInput.value = '';
         btnCancelarEdicao.style.display = 'none';
     });
 
-    // Excluir filme
+
     async function deleteFilme(id) {
         if (!confirm('Tem certeza que deseja excluir este filme?')) {
             return;
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             alert('Filme excluído com sucesso!');
-            loadFilmes(); // Recarrega a tabela
+            loadFilmes();
         } catch (error) {
             console.error('Erro ao excluir filme:', error);
             alert('Não foi possível excluir o filme. Tente novamente.');
@@ -248,22 +248,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 
-    // --- Inicialização da Página ---
-    
-    // Verifica a permissão do usuário ao carregar a página
+
+
     const currentUser = getCurrentUser();
     if (!currentUser || !currentUser.isAdmin) {
-        // Usuário não logado ou não é admin
-        adminContent.classList.add('d-none'); // Esconde o conteúdo de admin
-        noAdminAccessMessage.classList.remove('d-none'); // Mostra a mensagem de acesso negado
-        // Esconde o link de cadastro de itens no cabeçalho também (se já não estiver oculto)
+
+        adminContent.classList.add('d-none');
+        noAdminAccessMessage.classList.remove('d-none');
+
         if (linkCadastroItens) linkCadastroItens.classList.add('d-none');
     } else {
-        // Usuário é admin, mostra o conteúdo
+
         adminContent.classList.remove('d-none');
         noAdminAccessMessage.classList.add('d-none');
-        loadFilmes(); // Carrega os filmes para a tabela
+        loadFilmes();
     }
 
-    updateHeader(); // Atualiza o cabeçalho
+    updateHeader();
 });

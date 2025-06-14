@@ -12,11 +12,10 @@
     <link href="assets/style.css" rel="stylesheet">
 
     <style>
-        /* Estilos específicos para a página de cadastro, para consistência */
         body {
-    background-color: hsl(218, 31%, 5%);
-            color: #f8f9fa; /* Texto padrão claro */
-            padding-top: 90px; /* Espaço para o cabeçalho fixo */
+            background-color: hsl(218, 31%, 5%);
+            color: #f8f9fa;
+            padding-top: 90px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -27,7 +26,7 @@
         }
 
         .section-title {
-            color: #ffc107; /* Título da seção em amarelo CineVerso */
+            color: #ffc107;
             font-weight: bold;
             margin-bottom: 40px;
             text-align: center;
@@ -35,13 +34,14 @@
             text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
         }
 
-        .form-container, .table-container {
-            background-color: #2c2c2c; /* Fundo mais escuro para os blocos */
-            border: 1px solid #495057; /* Borda suave */
+        .form-container,
+        .table-container {
+            background-color: #2c2c2c;
+            border: 1px solid #495057;
             border-radius: 10px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
         .form-label {
@@ -49,15 +49,21 @@
             font-weight: bold;
         }
 
-        .form-control, .form-select, .form-control:focus, .form-select:focus {
+        .form-control,
+        .form-select,
+        .form-control:focus,
+        .form-select:focus {
             background-color: #495057;
             border-color: #6c757d;
             color: #f8f9fa;
         }
+
         .form-control::placeholder {
             color: #ccc;
         }
-        .form-control:focus, .form-select:focus {
+
+        .form-control:focus,
+        .form-select:focus {
             box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
             border-color: #ffc107;
         }
@@ -68,6 +74,7 @@
             color: #212529 !important;
             font-weight: bold;
         }
+
         .btn-cineverso:hover {
             background-color: #e0a800 !important;
             border-color: #e0a800 !important;
@@ -77,37 +84,43 @@
             background-color: #dc3545 !important;
             border-color: #dc3545 !important;
         }
+
         .btn-danger:hover {
             background-color: #c82333 !important;
             border-color: #bd2130 !important;
         }
-        
+
         .btn-outline-secondary {
             border-color: #6c757d !important;
             color: #6c757d !important;
         }
+
         .btn-outline-secondary:hover {
             background-color: #6c757d !important;
             color: #f8f9fa !important;
         }
 
         .table {
-            color: #f8f9fa; /* Cor do texto da tabela */
+            color: #f8f9fa;
         }
+
         .table thead th {
-            color: #ffc107; /* Cabeçalho da tabela em amarelo */
-            border-bottom-color: #ffc107; /* Linha de baixo do cabeçalho */
+            color: #ffc107;
+            border-bottom-color: #ffc107;
         }
+
         .table tbody tr {
-            border-color: #495057; /* Cor das linhas da tabela */
+            border-color: #495057;
         }
+
         .table-hover tbody tr:hover {
-            background-color: #343a40; /* Fundo mais claro no hover da linha */
+            background-color: #343a40;
         }
+
         .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(0,0,0,.05); /* Fundo listrado suave */
+            background-color: rgba(0, 0, 0, .05);
         }
-        
+
         .no-admin-message {
             text-align: center;
             color: #ffc107;
@@ -115,7 +128,7 @@
             margin-top: 50px;
             padding: 40px;
             background-color: #2c2c2c;
-            border: 2px solid #dc3545; /* Borda vermelha para aviso */
+            border: 2px solid #dc3545;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(220, 53, 69, 0.4);
             max-width: 800px;
@@ -142,8 +155,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a href="categorias.html"
-                            class="nav-link text-white text-uppercase fw-bold">Categorias</a>
+                        <a href="categorias.html" class="nav-link text-white text-uppercase fw-bold">Categorias</a>
                     </li>
                     <li class="nav-item">
                         <a href="favoritos.html" id="link-favoritos"
@@ -159,8 +171,8 @@
                     </li>
                     <li class="nav-item">
                         <form class="d-flex mt-2 mt-lg-0" role="search" id="search-form">
-                            <input class="form-control me-2" type="search" placeholder="Buscar..."
-                                aria-label="Search" id="search-input">
+                            <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search"
+                                id="search-input">
                             <button class="btn btn-outline-warning" type="submit">Buscar</button>
                         </form>
                     </li>
@@ -178,17 +190,20 @@
             <a href="app_login/login.html" class="btn btn-cineverso mt-3">Fazer Login</a>
         </div>
 
-        <div id="admin-content" class="d-none"> <div class="form-container">
+        <div id="admin-content" class="d-none">
+            <div class="form-container">
                 <h3 class="text-warning mb-4">Adicionar / Editar Filme</h3>
                 <form id="filme-form">
-                    <input type="hidden" id="filme-id"> <div class="row">
+                    <input type="hidden" id="filme-id">
+                    <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="titulo" class="form-label">Título</label>
                             <input type="text" class="form-control" id="titulo" required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="categoria" class="form-label">Categoria</label>
-                            <input type="text" class="form-control" id="categoria" placeholder="Ex: Ação, Drama, Terror" required>
+                            <input type="text" class="form-control" id="categoria" placeholder="Ex: Ação, Drama, Terror"
+                                required>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -198,11 +213,13 @@
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="imagem" class="form-label">URL da Imagem (Poster)</label>
-                            <input type="url" class="form-control" id="imagem" placeholder="https://exemplo.com/poster.jpg" required>
+                            <input type="url" class="form-control" id="imagem"
+                                placeholder="https://exemplo.com/poster.jpg" required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="fundo" class="form-label">URL da Imagem de Fundo (Carrossel)</label>
-                            <input type="url" class="form-control" id="fundo" placeholder="https://exemplo.com/fundo.jpg">
+                            <input type="url" class="form-control" id="fundo"
+                                placeholder="https://exemplo.com/fundo.jpg">
                         </div>
                     </div>
                     <div class="row">
@@ -231,7 +248,8 @@
                         </label>
                     </div>
                     <div class="d-flex justify-content-end gap-2">
-                        <button type="button" class="btn btn-outline-secondary" id="btn-cancelar-edicao" style="display:none;">Cancelar Edição</button>
+                        <button type="button" class="btn btn-outline-secondary" id="btn-cancelar-edicao"
+                            style="display:none;">Cancelar Edição</button>
                         <button type="submit" class="btn btn-cineverso">Salvar Filme</button>
                     </div>
                 </form>
@@ -252,7 +270,7 @@
                             </tr>
                         </thead>
                         <tbody id="filmes-table-body">
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>

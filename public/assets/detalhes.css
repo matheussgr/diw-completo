@@ -1,4 +1,4 @@
-/* Estilo geral do corpo da página */
+
 body {
     background-color: hsl(216, 28%, 7%);
     color: hsl(0, 0%, 100%);
@@ -9,18 +9,18 @@ body {
 }
 
 
-/* Ocupa o espaço restante entre header e footer */
+
 main {
     flex: 1;
 }
 
-/* Banner com informações do filme */
+
 .hero {
     position: relative;
     padding: 6rem 0;
 }
 
-/* Poster do filme */
+
 .poster {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
@@ -28,13 +28,13 @@ main {
 }
 
 
-/* Título do filme */
+
 .movie-title {
     font-size: 2.5rem;
     font-weight: 700;
 }
 
-/* Área dos botões */
+
 .actions {
     background-color: #a09f9f0e;
     border-radius: 10px;
@@ -42,36 +42,36 @@ main {
 }
 
 
-/* Botões dentro da seção .actions */
+
 .actions button {
     width: 100%;
     margin-bottom: 1rem;
     color: yellow;
 }
 
-/* Ícones no mobile*/
+
 .icons {
     height: 1.25rem;
     width: 1.25rem;
     margin-top: 0.063rem;
 }
 
-/* Input da caixa de busca */
+
 input.form-control {
     border-radius: 25px;
-    border: 2px solid hsl(49, 100%, 50%); /* amarelo */
+    border: 2px solid hsl(49, 100%, 50%);
     padding: 10px 15px;
     font-size: 16px;
     transition: all 0.3s ease-in-out;
 }
 
-/* Quando o input está em foco */
+
 input.form-control:focus {
     border-color: hsl(49, 100%, 50%);
     box-shadow: 0 0 8px hsl(49, 100%, 37%);
 }
 
-/* Botão de busca */
+
 button.btn-outline-success {
     border-radius: 25px;
     border-width: 2px;
@@ -82,43 +82,43 @@ button.btn-outline-success {
     color: hsl(49, 100%, 50%);
 }
 
-/* Botão de busca ao passar o mouse */
+
 button.btn-outline-success:hover {
     background-color: hsl(49, 100%, 50%);
     color: white;
     border-color: hsl(49, 100%, 50%);
 }
 
-/* Geral para links */
+
 a {
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 
 }
 
-/* Links visitados*/
+
 a:visited,
 a:link {
     color: whitesmoke;
 }
 
-/* Cor ao passar o mouse nos links */
+
 a:hover {
     color: rgb(0, 0, 0);
 }
 
-/* Estilo dos links do menu */
+
 .menu-link {
     color: white;
     transition: color 0.3s ease-in-out;
 }
   
-/* Cor ao passar o mouse nos links do menu */
+
 .menu-link:hover {
     color: hwb(37 23% 0%) !important;
 }
 
-/* Estilo do banner com informações do filme" */
+
 .hero .btn-custom {
     color: #ffc107 !important; 
     border: 2px solid #ffc107;
@@ -128,7 +128,7 @@ a:hover {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hoover dos elementos com informações do filme" */
+
 .hero .btn-custom:hover {
     background-color: #ffc107;
     color: black !important; 

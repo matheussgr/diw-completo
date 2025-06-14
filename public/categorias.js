@@ -1,20 +1,20 @@
-// categorias.js
+
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const BASE_URL = 'http://localhost:3000'; // Mesma URL do seu JSON Server
+    const BASE_URL = 'http://localhost:3000';
 
     const categoryButtonsContainer = document.getElementById('category-buttons-container');
     const filteredMoviesContainer = document.getElementById('filtered-movies-container');
     const noMoviesInCategoryMessage = document.getElementById('no-movies-in-category-message');
 
-    let allFilmes = []; // Para armazenar todos os filmes e facilitar a filtragem
+    let allFilmes = [];
 
-    // Elementos do cabeçalho (para updateHeader)
+
     const linkFavoritos = document.getElementById("link-favoritos");
     const linkAuth = document.getElementById("link-auth");
     const linkCadastroItens = document.getElementById("link-cadastro-itens");
 
-    // --- Funções de Autenticação (Copias EXATAS do app.js para consistência) ---
+
     function getCurrentUser() {
         try {
             const user = sessionStorage.getItem('currentUser');
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    function saveCurrentUser(user) { 
+    function saveCurrentUser(user) {
         try {
             sessionStorage.setItem('currentUser', JSON.stringify(user));
         } catch (e) {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         sessionStorage.removeItem('currentUser');
     }
 
-    // --- Gerenciamento do Cabeçalho e Login/Logout (Copias EXATAS do app.js para consistência) ---
+
     function updateHeader() {
         const currentUser = getCurrentUser();
 
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (currentUser) {
             if (linkFavoritos) linkFavoritos.classList.remove('d-none');
-            
+
             if (linkAuth) {
                 linkAuth.textContent = 'Logout';
                 linkAuth.href = '#';
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // --- Funções de Favorito (Copias EXATAS do app.js para consistência) ---
+
     async function updateFavoriteStatus(filmeId, isFavorite) {
         const currentUser = getCurrentUser();
         if (!currentUser) {
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
-        let userFavorites = new Set(currentUser.favoritos ? currentUser.favoritos.map(String) : []); 
+        let userFavorites = new Set(currentUser.favoritos ? currentUser.favoritos.map(String) : []);
 
         if (isFavorite) {
             userFavorites.add(filmeId);
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const updatedFavorites = Array.from(userFavorites);
 
         try {
-            const response = await fetch(`${BASE_URL}/usuarios/${currentUser.id}`, { 
+            const response = await fetch(`${BASE_URL}/usuarios/${currentUser.id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ favoritos: updatedFavorites })
@@ -105,13 +105,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             const updatedUser = await response.json();
-            saveCurrentUser(updatedUser); 
-            // Re-renderiza os filmes da categoria atual para atualizar o ícone
+            saveCurrentUser(updatedUser);
+
             const activeCategoryButton = document.querySelector('.category-button.active');
             if (activeCategoryButton) {
                 filterMoviesByCategory(activeCategoryButton.textContent);
             } else {
-                displayAllMovies(); // Se nenhuma categoria estiver ativa, exibe todos (padrão)
+                displayAllMovies();
             }
         } catch (error) {
             console.error('Erro ao atualizar favoritos:', error);
@@ -119,14 +119,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // --- Criação do Card de Filme (Copia EXATA do app.js) ---
+
     function createFilmeCard(filme, currentUser, userFavorites) {
         let card = document.createElement("div");
-        card.classList.add("col-6", "col-md-3", "mb-4"); // Note: removed lista-filmes-item, if it only relates to Home
+        card.classList.add("col-6", "col-md-3", "mb-4");
 
         const isFavorite = currentUser && userFavorites.has(filme.id);
         const favoriteIconClass = isFavorite ? 'bi-heart-fill text-danger' : 'bi-heart';
-        
+
         const favoriteButtonHtml = currentUser ?
             `<button class="btn btn-sm favorite-btn position-absolute top-0 end-0 m-2" data-filme-id="${filme.id}" data-is-favorite="${isFavorite}" style="background-color: rgba(0,0,0,0.5); border-radius: 50%;">
                 <i class="bi ${favoriteIconClass} fs-5"></i>
@@ -150,16 +150,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 
-    // --- Lógica da Página de Categorias ---
 
-    // Carrega todas as categorias e cria os botões
+
+
     async function loadCategoriesAndButtons() {
         try {
             const response = await fetch(`${BASE_URL}/filmes`);
             if (!response.ok) {
                 throw new Error(`Erro ao buscar filmes para categorias: ${response.status}`);
             }
-            allFilmes = await response.json(); // Salva todos os filmes
+            allFilmes = await response.json();
 
             const categories = new Set();
             allFilmes.forEach(filme => {
@@ -168,9 +168,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
             });
 
-            // Adiciona um botão "Todos"
+
             const allButton = document.createElement('button');
-            allButton.classList.add('category-button', 'active'); // 'Todos' começa ativo
+            allButton.classList.add('category-button', 'active');
             allButton.textContent = 'Todos';
             allButton.addEventListener('click', () => {
                 setActiveCategoryButton(allButton);
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 categoryButtonsContainer.appendChild(button);
             });
 
-            // Exibe todos os filmes por padrão ao carregar a página
+
             displayAllMovies();
 
         } catch (error) {
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // Define qual botão de categoria está ativo
+
     function setActiveCategoryButton(activeButton) {
         document.querySelectorAll('.category-button').forEach(button => {
             button.classList.remove('active');
@@ -208,26 +208,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         activeButton.classList.add('active');
     }
 
-    // Exibe todos os filmes
+
     function displayAllMovies() {
         renderMovies(allFilmes);
     }
 
-    // Filtra e exibe filmes por categoria
+
     function filterMoviesByCategory(category) {
-        const filteredFilmes = allFilmes.filter(filme => 
+        const filteredFilmes = allFilmes.filter(filme =>
             filme.categoria && filme.categoria.trim().toLowerCase() === category.toLowerCase()
         );
         renderMovies(filteredFilmes);
     }
 
-    // Renderiza os filmes em filteredMoviesContainer
+
     function renderMovies(moviesToDisplay) {
         const currentUser = getCurrentUser();
         const userFavorites = new Set(currentUser && currentUser.favoritos ? currentUser.favoritos.map(String) : []);
 
-        filteredMoviesContainer.innerHTML = ''; // Limpa antes de renderizar
-        noMoviesInCategoryMessage.classList.add('d-none'); // Oculta a mensagem de sem filmes
+        filteredMoviesContainer.innerHTML = '';
+        noMoviesInCategoryMessage.classList.add('d-none');
 
         if (moviesToDisplay.length === 0) {
             noMoviesInCategoryMessage.classList.remove('d-none');
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             filteredMoviesContainer.appendChild(card);
         });
 
-        // Adicionar event listeners aos botões de favorito após a renderização
+
         document.querySelectorAll('.favorite-btn').forEach(button => {
             button.addEventListener('click', async (event) => {
                 const filmeId = event.currentTarget.dataset.filmeId;
@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 
-    // --- Inicialização da Página ---
-    updateHeader(); // Atualiza o cabeçalho
-    loadCategoriesAndButtons(); // Carrega as categorias e exibe os filmes
+
+    updateHeader();
+    loadCategoriesAndButtons();
 });

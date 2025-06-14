@@ -1,10 +1,10 @@
-// app.js
+
 
 document.addEventListener("DOMContentLoaded", () => {
-    // --- Configurações Iniciais ---
-    const BASE_URL = 'http://localhost:3000'; // URL base do seu JSON Server
 
-    // Elementos do DOM para manipulação
+    const BASE_URL = 'http://localhost:3000';
+
+
     const filmesContainers = [
         document.getElementById("filmes-container-1"),
         document.getElementById("filmes-container-2"),
@@ -13,24 +13,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
     const searchForm = document.getElementById("search-form");
 
-    // Elementos do cabeçalho
+
     const linkFavoritos = document.getElementById("link-favoritos");
     const linkAuth = document.getElementById("link-auth");
     const linkCadastroItens = document.getElementById("link-cadastro-itens");
 
-    // Elementos de título e carrossel para controlar a visibilidade na busca
+
     const destaquesTituloContainer = document.getElementById("destaques-titulo-container");
     const carouselDestaques = document.getElementById("carouselDestaques");
     const tituloLancamentos = document.getElementById("titulo-lancamentos");
     const tituloRecomendados = document.getElementById("titulo-recomendados");
     const tituloValeAPena = document.getElementById("titulo-vale-a-pena");
 
-    let allFilmes = []; // Armazenará todos os filmes para a funcionalidade de pesquisa
-    let myChartInstance; // Variável para armazenar a instância do Chart.js
+    let allFilmes = [];
+    let myChartInstance;
 
-    // --- Funções de Autenticação e Perfil de Usuário ---
 
-    // Obtém o usuário logado do sessionStorage
+
+
     function getCurrentUser() {
         try {
             const user = sessionStorage.getItem('currentUser');
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Salva o usuário logado no sessionStorage
+
     function saveCurrentUser(user) {
         try {
             sessionStorage.setItem('currentUser', JSON.stringify(user));
@@ -50,22 +50,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Remove o usuário do sessionStorage (logout)
+
     function removeCurrentUser() {
         sessionStorage.removeItem('currentUser');
     }
 
-    // Atualiza o status de favorito de um filme para o usuário logado
+
     async function updateFavoriteStatus(filmeId, isFavorite) {
         const currentUser = getCurrentUser();
         if (!currentUser) {
             alert("Você precisa estar logado para favoritar um filme!");
-            window.location.href = 'app_login/login.html'; // Redireciona para a página de login
+            window.location.href = 'app_login/login.html';
             return;
         }
 
-        // Garante que favoritos seja um array para evitar erros e converte para Set de Strings para consistência de ID
-        let userFavorites = new Set(currentUser.favoritos ? currentUser.favoritos.map(String) : []); 
+
+        let userFavorites = new Set(currentUser.favoritos ? currentUser.favoritos.map(String) : []);
 
         if (isFavorite) {
             userFavorites.add(filmeId);
@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const updatedFavorites = Array.from(userFavorites);
 
         try {
-            // Requisição PATCH para atualizar apenas o campo 'favoritos' do usuário no JSON Server
-            const response = await fetch(`${BASE_URL}/usuarios/${currentUser.id}`, { 
+
+            const response = await fetch(`${BASE_URL}/usuarios/${currentUser.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -90,69 +90,67 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const updatedUser = await response.json();
-            saveCurrentUser(updatedUser); // Atualiza o usuário no sessionStorage com os novos favoritos
-            renderFilmes(allFilmes); // Re-renderiza os filmes para atualizar os ícones de coração
+            saveCurrentUser(updatedUser);
+            renderFilmes(allFilmes);
         } catch (error) {
             console.error('Erro ao atualizar favoritos:', error);
             alert('Não foi possível atualizar seus favoritos. Tente novamente.');
         }
     }
 
-    // --- Gerenciamento do Cabeçalho e Login/Logout ---
 
-    // Atualiza a visibilidade dos links do cabeçalho com base no status de login
+
     function updateHeader() {
         const currentUser = getCurrentUser();
 
-        // Oculta links por padrão e define o estado de não logado
+
         if (linkFavoritos) linkFavoritos.classList.add('d-none');
         if (linkCadastroItens) linkCadastroItens.classList.add('d-none');
 
         if (linkAuth) {
             linkAuth.textContent = 'Login/Registrar';
-            linkAuth.href = 'app_login/login.html'; // Caminho para a página de login
-            linkAuth.onclick = null; // Remove handler de logout se não estiver logado
+            linkAuth.href = 'app_login/login.html';
+            linkAuth.onclick = null;
         }
 
         if (currentUser) {
-            // Usuário logado
-            if (linkFavoritos) linkFavoritos.classList.remove('d-none'); // Mostra o link de favoritos
-            
+
+            if (linkFavoritos) linkFavoritos.classList.remove('d-none');
+
             if (linkAuth) {
-                linkAuth.textContent = 'Logout'; // Altera o texto para Logout
-                linkAuth.href = '#'; // Define href como '#' para ser tratado pelo JS
-                linkAuth.onclick = handleLogout; // Adiciona listener para logout
+                linkAuth.textContent = 'Logout';
+                linkAuth.href = '#';
+                linkAuth.onclick = handleLogout;
             }
 
-            // Verifica se o usuário é administrador
+
             if (currentUser.isAdmin && linkCadastroItens) {
-                linkCadastroItens.classList.remove('d-none'); // Mostra o link de cadastro se for admin
+                linkCadastroItens.classList.remove('d-none');
             }
         }
     }
 
-    // Lida com a ação de logout
+
     function handleLogout(event) {
-        event.preventDefault(); // Impede o comportamento padrão do link
+        event.preventDefault();
         if (confirm("Tem certeza que deseja sair?")) {
-            removeCurrentUser(); // Remove o usuário da sessão
+            removeCurrentUser();
             alert("Você foi desconectado.");
-            window.location.href = 'app_login/login.html'; // Redireciona para a página de login
+            window.location.href = 'app_login/login.html';
         }
     }
 
-    // --- Renderização de Filmes (Cards e Carrossel) ---
 
-    // Cria o HTML de um card de filme
+
+
     function createFilmeCard(filme, currentUser, userFavorites) {
         let card = document.createElement("div");
         card.classList.add("col-6", "col-md-3", "lista-filmes-item", "mb-4");
 
-        const isFavorite = currentUser && userFavorites.has(filme.id); // Verifica se é favorito apenas se logado
-        const favoriteIconClass = isFavorite ? 'bi-heart-fill text-danger' : 'bi-heart'; // Coração preenchido/vazado
-        
-        // O botão de favorito só aparece se o usuário estiver logado
-        // E AGORA ESTÁ POSICIONADO NO CANTO SUPERIOR DIREITO DA IMAGEM
+        const isFavorite = currentUser && userFavorites.has(filme.id);
+        const favoriteIconClass = isFavorite ? 'bi-heart-fill text-danger' : 'bi-heart';
+
+
         const favoriteButtonHtml = currentUser ?
             `<button class="btn btn-sm favorite-btn position-absolute top-0 end-0 m-2" data-filme-id="${filme.id}" data-is-favorite="${isFavorite}" style="background-color: rgba(0,0,0,0.5); border-radius: 50%;">
                 <i class="bi ${favoriteIconClass} fs-5"></i>
@@ -175,31 +173,31 @@ document.addEventListener("DOMContentLoaded", () => {
         return card;
     }
 
-    // Renderiza os filmes nos containers apropriados (cards)
+
     function renderFilmes(filmesToDisplay) {
         const currentUser = getCurrentUser();
-        // userFavorites deve ser um Set para buscas rápidas. Mapeia para String para consistência.
-        const userFavorites = new Set(currentUser && currentUser.favoritos ? currentUser.favoritos.map(String) : []); 
+
+        const userFavorites = new Set(currentUser && currentUser.favoritos ? currentUser.favoritos.map(String) : []);
 
         filmesContainers.forEach(container => {
-            if (container) container.innerHTML = ''; // Limpa os containers antes de re-renderizar
+            if (container) container.innerHTML = '';
         });
 
-        // Adaptação para a busca: se houver termo de busca, todos os resultados vão para o primeiro container
+
         if (searchInput && searchInput.value.trim() !== "") {
             filmesToDisplay.forEach((filme) => {
                 const card = createFilmeCard(filme, currentUser, userFavorites);
                 if (filmesContainers[0]) filmesContainers[0].appendChild(card);
             });
-            // Limpa os outros containers, pois a busca unifica os resultados
+
             if (filmesContainers[1]) filmesContainers[1].innerHTML = '';
             if (filmesContainers[2]) filmesContainers[2].innerHTML = '';
         } else {
-            // Se não houver termo de busca, distribui os filmes por seção
+
             filmesToDisplay.forEach((filme) => {
                 const card = createFilmeCard(filme, currentUser, userFavorites);
                 let targetContainer;
-                // Os nomes das seções devem ser EXATAMENTE como no db.json
+
                 if (filme.secao === "Lançamentos") {
                     targetContainer = filmesContainers[0];
                 } else if (filme.secao === "Recomendados pra você") {
@@ -214,19 +212,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Adicionar event listeners aos botões de favorito após a renderização
+
         document.querySelectorAll('.favorite-btn').forEach(button => {
             button.addEventListener('click', async (event) => {
-                // Certifica-se que o ID do filme seja do tipo correto (string) para comparação
-                const filmeId = event.currentTarget.dataset.filmeId; 
+
+                const filmeId = event.currentTarget.dataset.filmeId;
                 const isCurrentlyFavorite = event.currentTarget.dataset.isFavorite === 'true';
-                
+
                 await updateFavoriteStatus(filmeId, !isCurrentlyFavorite);
             });
         });
     }
 
-    // Busca e exibe todos os filmes (para a seção de cards)
+
     async function fetchFilmes() {
         try {
             const response = await fetch(`${BASE_URL}/filmes`);
@@ -234,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(`Erro na requisição dos filmes: ${response.status}`);
             }
             allFilmes = await response.json();
-            renderFilmes(allFilmes); // Renderiza todos inicialmente
+            renderFilmes(allFilmes);
         }
         catch (error) {
             console.error('Ocorreu um erro ao buscar os filmes:', error);
@@ -244,13 +242,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Busca e exibe os filmes em destaque (para o carrossel)
+
     async function fetchDestaques() {
         const carouselInner = document.getElementById('carousel-inner-container');
         const carouselIndicators = document.getElementById('carousel-indicators-container');
 
         try {
-            const response = await fetch(`${BASE_URL}/filmes?destaque=true`); // Filtra por filmes com destaque=true
+            const response = await fetch(`${BASE_URL}/filmes?destaque=true`);
             if (!response.ok) {
                 throw new Error(`Erro na requisição dos destaques: ${response.status}`);
             }
@@ -277,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 if (carouselIndicators) carouselIndicators.appendChild(indicator);
 
-                // Criar item do carrossel
+
                 const carouselItem = document.createElement('div');
                 carouselItem.classList.add('carousel-item');
                 if (index === 0) {
@@ -301,17 +299,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- Funcionalidade de Pesquisa ---
+
 
     if (searchForm) {
         searchForm.addEventListener('submit', (event) => {
             event.preventDefault();
             performSearch();
         });
-        // Opcional: Adicionar evento 'input' para pesquisa em tempo real
+
         searchInput.addEventListener('input', () => {
-             // Pequeno delay para nao sobrecarregar em cada letra digitada
-            setTimeout(performSearch, 300); 
+
+            setTimeout(performSearch, 300);
         });
     }
 
@@ -320,47 +318,47 @@ document.addEventListener("DOMContentLoaded", () => {
         let filteredFilmes = [];
 
         if (searchTerm === "") {
-            filteredFilmes = allFilmes; // Se o campo está vazio, mostra todos
-            // Exibe as seções e o carrossel novamente
+            filteredFilmes = allFilmes;
+
             if (destaquesTituloContainer) destaquesTituloContainer.classList.remove('d-none');
             if (carouselDestaques) carouselDestaques.classList.remove('d-none');
             if (tituloLancamentos) tituloLancamentos.classList.remove('d-none');
             if (tituloRecomendados) tituloRecomendados.classList.remove('d-none');
             if (tituloValeAPena) tituloValeAPena.classList.remove('d-none');
-            
-            // Garante que o container do gráfico esteja visível
+
+
             const graficoContainer = document.querySelector('#graficoCategorias').closest('.container');
             if (graficoContainer) graficoContainer.classList.remove('d-none');
 
-            // Re-renderiza os filmes nas suas seções originais
-            renderFilmes(allFilmes); 
-            fetchDestaques(); // Recarrega o carrossel se necessário
-            renderGraficoCategorias(); // Garante que o gráfico seja re-exibido
+
+            renderFilmes(allFilmes);
+            fetchDestaques();
+            renderGraficoCategorias();
         } else {
-            // Filtra por título, descrição ou categoria
+
             filteredFilmes = allFilmes.filter(filme =>
                 filme.titulo.toLowerCase().includes(searchTerm) ||
                 (filme.descricao && filme.descricao.toLowerCase().includes(searchTerm)) ||
                 (filme.categoria && filme.categoria.toLowerCase().includes(searchTerm))
             );
-            
-            // Oculta as seções, o carrossel E O GRÁFICO
+
+
             if (destaquesTituloContainer) destaquesTituloContainer.classList.add('d-none');
             if (carouselDestaques) carouselDestaques.classList.add('d-none');
             if (tituloLancamentos) tituloLancamentos.classList.add('d-none');
             if (tituloRecomendados) tituloRecomendados.classList.add('d-none');
             if (tituloValeAPena) tituloValeAPena.classList.add('d-none');
-            
-            // Oculta a seção do gráfico
+
+
             const graficoContainer = document.querySelector('#graficoCategorias').closest('.container');
             if (graficoContainer) graficoContainer.classList.add('d-none');
 
-            // Renderiza os filmes filtrados no primeiro container
-            renderFilmes(filteredFilmes); 
+
+            renderFilmes(filteredFilmes);
         }
     }
 
-    // --- Funcionalidade de Gráfico de Categorias ---
+
     async function renderGraficoCategorias() {
         try {
             const response = await fetch(`${BASE_URL}/filmes`);
@@ -371,63 +369,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const categorias = {};
 
-            // Conta a quantidade de filmes por categoria
+
             filmes.forEach(filme => {
-                const genero = filme.categoria || "Desconhecido"; // Usa 'categoria' do seu db.json
+                const genero = filme.categoria || "Desconhecido";
                 categorias[genero] = (categorias[genero] || 0) + 1;
             });
 
             const labels = Object.keys(categorias);
             const dados = Object.values(categorias);
 
-            const ctx = document.getElementById('graficoCategorias'); // Pega o elemento canvas
-            if (!ctx) { 
+            const ctx = document.getElementById('graficoCategorias');
+            if (!ctx) {
                 console.warn("Elemento canvas com ID 'graficoCategorias' não encontrado.");
                 return;
             }
 
-            // Destrói o gráfico existente se houver
-            if (myChartInstance) { 
+
+            if (myChartInstance) {
                 myChartInstance.destroy();
             }
 
-            // Garante que o container do gráfico esteja visível (caso tenha sido ocultado pela busca)
+
             const graficoContainer = ctx.closest('.container');
             if (graficoContainer) graficoContainer.classList.remove('d-none');
 
-            // Recriar o gradiente com as cores do gráfico original (azul)
+
             const chartCtx = ctx.getContext('2d');
             const gradient = chartCtx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(0, 123, 255, 0.9)'); // Azul mais forte
-            gradient.addColorStop(1, 'rgba(0, 123, 255, 0.4)'); // Azul mais claro
+            gradient.addColorStop(0, 'rgba(0, 123, 255, 0.9)');
+            gradient.addColorStop(1, 'rgba(0, 123, 255, 0.4)');
 
-            myChartInstance = new Chart(chartCtx, { // Armazena a instância
+            myChartInstance = new Chart(chartCtx, {
                 type: 'bar',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Quantidade de Filmes por Categoria', // Rótulo original
+                        label: 'Quantidade de Filmes por Categoria',
                         data: dados,
-                        backgroundColor: gradient, // Usando o gradiente azul
-                        borderColor: 'transparent', // Sem borda, como no original
+                        backgroundColor: gradient,
+                        borderColor: 'transparent',
                         borderRadius: 10,
                         borderSkipped: false
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false, 
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            display: false 
+                            display: false
                         },
                         title: {
                             display: true,
-                            text: 'Distribuição de Filmes por Categoria', // Título original
-                            color: '#ffffff', // Cor branca para o título, como no original
+                            text: 'Distribuição de Filmes por Categoria',
+                            color: '#ffffff',
                             font: {
-                                size: 18, // Tamanho original
-                                family: 'Arial', 
+                                size: 18,
+                                family: 'Arial',
                                 weight: 'bold'
                             },
                             padding: {
@@ -436,36 +434,36 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         },
                         tooltip: {
-                            backgroundColor: '#333', // Fundo mais escuro para o tooltip
-                            titleColor: '#fff', // Título do tooltip branco
-                            bodyColor: '#fff', // Corpo do tooltip branco
-                            borderColor: '#555', // Borda do tooltip cinza
+                            backgroundColor: '#333',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: '#555',
                             borderWidth: 1
                         }
                     },
                     scales: {
                         x: {
                             ticks: {
-                                color: '#ffffff' // Cor dos labels do eixo X branco
+                                color: '#ffffff'
                             },
                             grid: {
-                                display: false 
+                                display: false
                             },
-                            title: { 
-                                display: false, // O original não tinha título nos eixos
+                            title: {
+                                display: false,
                             }
                         },
                         y: {
                             beginAtZero: true,
                             ticks: {
-                                color: '#ffffff', // Cor dos labels do eixo Y branco
-                                stepSize: 1 
+                                color: '#ffffff',
+                                stepSize: 1
                             },
                             grid: {
-                                color: 'rgba(255,255,255,0.1)' 
+                                color: 'rgba(255,255,255,0.1)'
                             },
-                            title: { 
-                                display: false, // O original não tinha título nos eixos
+                            title: {
+                                display: false,
                             }
                         }
                     },
@@ -485,10 +483,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // --- Inicialização da Página ---
 
-    updateHeader(); // Atualiza o cabeçalho (login/logout, favoritos, admin)
-    fetchFilmes(); // Busca e exibe todos os filmes nos cards
-    fetchDestaques(); // Busca e exibe os filmes no carrossel
-    renderGraficoCategorias(); // CHAMA O GRÁFICO AQUI!
+
+    updateHeader();
+    fetchFilmes();
+    fetchDestaques();
+    renderGraficoCategorias();
 });

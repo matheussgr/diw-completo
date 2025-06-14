@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const params = new URLSearchParams(location.search);
     const filmeId = parseInt(params.get('id'));
 
-    // Elementos do cabeçalho (AJUSTADOS para o novo HTML sem ícones duplicados)
+
     const linkFavoritos = document.getElementById("link-favoritos");
     const linkAuth = document.getElementById("link-auth");
     const linkCadastroItens = document.getElementById("link-cadastro-itens");
 
-    // --- Funções de Autenticação e Perfil de Usuário ---
+
     function getCurrentUser() {
         try {
             const user = sessionStorage.getItem('currentUser');
@@ -36,12 +36,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         const currentUser = getCurrentUser();
         if (!currentUser) {
             alert("Você precisa estar logado para favoritar um filme!");
-            // Ajustado caminho relativo para a página de login
-            window.location.href = './app_login/login.html'; 
+
+            window.location.href = './app_login/login.html';
             return;
         }
 
-        // Garante que favoritos seja um array para evitar erros
+
         let userFavorites = new Set(currentUser.favoritos ? currentUser.favoritos : []);
 
         if (isFavorite) {
@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         const updatedFavorites = Array.from(userFavorites);
 
         try {
-            // **IMPORTANTE**: Usando /usuarios/ para corresponder ao seu db.json
-            const response = await fetch(`${BASE_URL}/usuarios/${currentUser.id}`, { 
+
+            const response = await fetch(`${BASE_URL}/usuarios/${currentUser.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -67,43 +67,43 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
 
             const updatedUser = await response.json();
-            saveCurrentUser(updatedUser); // Atualiza o usuário no sessionStorage
-            renderFilmeDetails(await fetchFilmeDetails(targetFilmeId)); // Re-renderiza para atualizar o ícone
+            saveCurrentUser(updatedUser);
+            renderFilmeDetails(await fetchFilmeDetails(targetFilmeId));
         } catch (error) {
             console.error('Erro ao atualizar favoritos:', error);
             alert('Não foi possível atualizar seus favoritos. Tente novamente.');
         }
     }
 
-    // --- Gerenciamento do Cabeçalho (AJUSTADO para o novo HTML) ---
+
     function updateHeader() {
         const currentUser = getCurrentUser();
 
-        // Oculta todos por padrão e define o estado de não logado
+
         if (linkFavoritos) linkFavoritos.classList.add('d-none');
         if (linkCadastroItens) linkCadastroItens.classList.add('d-none');
-        
+
         if (linkAuth) {
             linkAuth.textContent = 'Login/Registrar';
-            linkAuth.href = './app_login/login.html'; // Ajustado caminho relativo
-            linkAuth.onclick = null; // Garante que não haja handler de logout se não estiver logado
+            linkAuth.href = './app_login/login.html';
+            linkAuth.onclick = null;
         }
 
         if (currentUser) {
-            // Usuário logado
-            if (linkFavoritos) linkFavoritos.classList.remove('d-none'); // Mostra o link de favoritos
-            
+
+            if (linkFavoritos) linkFavoritos.classList.remove('d-none');
+
             if (linkAuth) {
-                linkAuth.textContent = 'Logout'; // Altera o texto para Logout
-                linkAuth.href = '#'; // Define href como '#' para ser tratado pelo JS
-                linkAuth.onclick = handleLogout; // Adiciona listener para logout
+                linkAuth.textContent = 'Logout';
+                linkAuth.href = '#';
+                linkAuth.onclick = handleLogout;
             }
 
             if (currentUser.isAdmin && linkCadastroItens) {
-                linkCadastroItens.classList.remove('d-none'); // Mostra o link de cadastro se for admin
+                linkCadastroItens.classList.remove('d-none');
             }
         }
-        // Se não houver currentUser, os elementos permanecem ocultos ou no estado inicial
+
     }
 
     function handleLogout(event) {
@@ -112,11 +112,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             removeCurrentUser();
             updateHeader();
             alert("Você foi desconectado.");
-            window.location.reload(); 
+            window.location.reload();
         }
     }
 
-    // --- Funções de Busca e Renderização dos Detalhes do Filme ---
+
 
     async function fetchFilmeDetails(id) {
         try {
@@ -139,13 +139,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         const currentUser = getCurrentUser();
-        // Garante que currentUser.favoritos é um array, mesmo que null/undefined
+
         const isFavorite = currentUser && Array.isArray(currentUser.favoritos) && currentUser.favoritos.includes(filme.id);
-        const favoriteIconClass = isFavorite ? 'bi-heart-fill text-danger' : 'bi-heart'; // Coração preenchido/vermelho ou vazado
+        const favoriteIconClass = isFavorite ? 'bi-heart-fill text-danger' : 'bi-heart';
         const favoriteButtonHtml = currentUser ?
             `<button id="favorite-detail-btn" class="btn btn-warning mb-2" data-filme-id="${filme.id}" data-is-favorite="${isFavorite}">
                 Favoritar <i class="bi ${favoriteIconClass}"></i>
-            </button>` : ''; // Botão de favorito só aparece se logado
+            </button>` : '';
 
 
         if (telaDetalhes) {
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             `;
         }
 
-        // Adicionar event listener ao botão de favorito
+
         if (currentUser) {
             const favoriteBtn = document.getElementById('favorite-detail-btn');
             if (favoriteBtn) {
@@ -183,9 +183,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // --- Inicialização da página de Detalhes ---
 
-    updateHeader(); // Atualiza o cabeçalho ao carregar a página de detalhes
+
+    updateHeader();
 
     if (filmeId) {
         const filme = await fetchFilmeDetails(filmeId);
